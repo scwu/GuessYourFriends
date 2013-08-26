@@ -70,7 +70,11 @@ class Welcome extends CI_Controller {
               $this->friend_array = $_SESSION['friend_array'];
             }
             $index_number = array_rand($this->friend_array, 1);
-            $data['user_profile'] = $this->friend_array[$index_number];
+            $user_profile = $this->friend_array[$index_number];
+            $_SESSION['name'] = $user_profile['name'];
+            $id = $user_profile['id'];
+            $picture_json = $this->facebook->api('/'.$id.'/picture', array('access_token' => $this->facebook->getAccessToken(), 'type' => 'large', 'redirect' => false));
+            $data['url']= $picture_json['data']['url'];
             unset($this->friend_array[$index_number]);
             $_SESSION['friend_array'] = array_values($this->friend_array);
             $_SESSION['score'] = $_SESSION['score'] + 1;

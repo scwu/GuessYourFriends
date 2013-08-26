@@ -24,16 +24,31 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
   {
+<<<<<<< HEAD
     $this->load->library('facebook');
 
     $user = $this->facebook->getUser();
+=======
+    $fb_config = array(
+      'appId' => 'APPID',
+      'secret' => 'APPSECRET'
+    );
+
+    $this->load->library('facebook', $fb_config);
+>>>>>>> cc4b51b9a53a5a6c4870bfe1ccdb372dc13340f5
 
     if ($user) {
       try {
         $data['user_profile'] = $this->facebook->api('/me');
+<<<<<<< HEAD
         } catch (FacebookApiException $e) {
           $user = null;
         }
+=======
+      } catch (FacebookApiException $e) {
+        $user = null;
+      }
+>>>>>>> cc4b51b9a53a5a6c4870bfe1ccdb372dc13340f5
     }
 
     if ($user) {
@@ -42,6 +57,7 @@ class Welcome extends CI_Controller {
       $data['login_url'] = $this->facebook->getLoginUrl();
     }
 
+<<<<<<< HEAD
     $this->load->view('view',$data);
   }
 
@@ -85,6 +101,10 @@ class Welcome extends CI_Controller {
       }
       
     }
+=======
+    $this->load->view('welcome_message', $data);
+	}
+>>>>>>> cc4b51b9a53a5a6c4870bfe1ccdb372dc13340f5
 }
 
 /* End of file welcome.php */

@@ -69,6 +69,8 @@
 <div id="container">
   <h1>Facebook</h1>
   <?php if (@$user_profile): ?>
+    <div id="friends"></div>
+    <input id="guess_box"></input>
     <a href="/CI/index.php/welcome/logout">Logout</a>
     <?php else: ?>
         <h2>Welcome to this facebook thing, please login below</h2>
@@ -78,4 +80,6 @@
 </div>
 
 </body>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="../../assets/js/script.js" type="text/javascript"></script>
 </html>

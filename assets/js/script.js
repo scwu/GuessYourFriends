@@ -6,6 +6,7 @@ $(document).ready(function() {
       if (e.which == 13) {
         $('#friends').empty();
         $('#score').empty();
+        var guess = $('#guess_box').val();
         $('#guess_box').val('');
         guess_word(guess);
         return false;
@@ -14,12 +15,13 @@ $(document).ready(function() {
     function guess_word(guess) {
       $.ajax({
         type : 'POST',
-        url : 'friends',
+        url : 'game/friends',
         dataType : 'json',
         data: {
           'name' : guess
         },
         success : function(response){
+          console.log(guess);
           $('#friends').append('<img src="' + response.url + '"/>'); 
           $('#score').append('<h2>' + response.score + '</h2>');
         }
